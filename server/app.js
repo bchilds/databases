@@ -24,6 +24,11 @@ app.use('/classes', router);
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
 
+app.use(function(req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+});
 // If we are being run directly, run the server.
 if (!module.parent) {
   app.listen(app.get('port'));
