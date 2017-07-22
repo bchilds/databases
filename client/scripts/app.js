@@ -32,7 +32,7 @@ var app = {
 
     // Poll for new messages
     setInterval(function() {
-      app.fetch(true);
+      //app.fetch(true);
     }, 3000);
   },
 
@@ -66,10 +66,12 @@ var app = {
       //data: { order: '-createdAt' },
       contentType: 'application/json',
       success: function(data) {
-        console.log(data);
+        //console.log(data);
         // Don't bother if we have nothing to work with
         if (!data.results || !data.results.length) { 
-
+          console.log('data: ', data);
+          console.log('data.results: ', data.results);
+          data = JSON.parse(data);
           app.renderMessages(data.results, animate);
           app.renderRoomList(data.results);
           return;
